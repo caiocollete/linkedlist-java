@@ -48,19 +48,18 @@ public class Lista {
     }
     public void remover(int info){
         No aux = this.buscaExaustiva(info);
-        if(aux != null){
-            if(aux!=inicio && aux!=fim){
+        if(aux != null) {
+            if (aux == inicio && aux == fim) {
+                inicio = fim = null;
+            } else if (aux == inicio) {
+                inicio = aux.getProx();
+                inicio.setAnt(null);
+            } else if (aux == fim) {
+                fim = aux.getAnt();
+                fim.setProx(null);
+            } else {
                 aux.getAnt().setProx(aux.getProx());
                 aux.getProx().setAnt(aux.getAnt());
-            }
-            else {
-                if (aux == inicio) {
-                    inicio = aux.getProx();
-                    aux.getProx().setAnt(null);
-                } else {
-                    fim = aux.getAnt();
-                    aux.getAnt().setProx(null);
-                }
             }
         }
     }
