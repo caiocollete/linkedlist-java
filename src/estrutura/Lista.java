@@ -38,13 +38,10 @@ public class Lista {
     }
     public No buscaExaustiva(int info){
         No aux = inicio;
-        while(aux != fim && info != aux.getInfo()){
+        while(aux != null && info != aux.getInfo()){
             aux = aux.getProx();
         }
-        if(info == aux.getInfo()){
-            return aux;
-        }
-        return null;
+        return aux;
     }
     public void remover(int info){
         No aux = this.buscaExaustiva(info);
